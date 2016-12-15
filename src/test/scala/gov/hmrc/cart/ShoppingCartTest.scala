@@ -35,4 +35,21 @@ class ShoppingCartTest extends UnitSpec {
     myCart += Apple
     myCart.cartItemsTotalPrice should be(0.6)
   }
+
+  "MyShoppingCart" should "add an apple and an orange and tell the price as 0.6" in {
+    val myCart = new ShoppingCart()
+    myCart += Apple
+    myCart += Orange
+    myCart.cartItemsTotalPrice should be(0.85)
+  }
+
+  "MyShoppingCart" should "add two apples and an orange and tell the price as 1.45 and the total items should be 3" in {
+    val myCart = new ShoppingCart()
+    myCart += Apple
+    myCart += Orange
+    myCart += Apple
+    myCart.cartItemsTotalPrice should be(1.45)
+    myCart.fruitCount should be(3)
+  }
+
 }
