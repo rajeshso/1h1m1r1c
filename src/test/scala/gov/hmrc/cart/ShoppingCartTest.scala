@@ -14,4 +14,19 @@ class ShoppingCartTest extends UnitSpec {
     myCart += Orange
     myCart += Apple
   }
+
+  "MyShoppingCart" should "record the number of apples as two" in {
+    val myCart = new ShoppingCart()
+    myCart += Apple
+    myCart += Apple
+    myCart.itemCount should be(2)
+  }
+
+  "MyShoppingCart" should "record the number of apples and oranges as a sum total of 3" in {
+    val myCart = new ShoppingCart()
+    myCart += Apple
+    myCart += Apple
+    myCart += Orange
+    myCart.itemCount should be(3)
+  }
 }

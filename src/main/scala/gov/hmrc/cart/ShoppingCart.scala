@@ -10,4 +10,6 @@ class ShoppingCart() {
   private var items = List.empty[Fruit]
 
   def +=(item: Fruit) = items = items :+ item
+
+  def itemCount = items.size
 }
