@@ -21,17 +21,27 @@ class ShoppingCart(offers: Offer = DisableOffer) {
 
   def cartItemsTotalPrice: Double = {
     def totalForApples = {
-      fruits.filter(item => item == Apple)
+      fruits.filter(fruit => fruit == Apple)
         .zipWithIndex
         .filter(elem => elem._2 % 2 == 0)
         .map(elem => elem._2)
         .foldLeft(0D)((t, i) => t + prices(Apple))
     }
+    def totalForOranges = {
+      fruits.filter(fruit => fruit == Orange)
+        .zipWithIndex
+        .foldLeft(0D) {
+          (total, tuple) =>
+            if (Iterator(0, 1).contains(tuple._2 % 3))
+              total + prices(Orange)
+            else
+              total
+        }
+    }
 
     offers match {
       case EnableOffer =>
-        totalForApples
-        BigDecimal(totalForApples).setScale(2, RoundingMode.HALF_UP).toDouble
+        BigDecimal(totalForApples + totalForOranges).setScale(2, RoundingMode.HALF_UP).toDouble
       case DisableOffer => fruits.foldLeft(0D) { (total, item) =>
         total + prices(item)
       }

@@ -93,4 +93,65 @@ class ShoppingCartTest extends UnitSpec {
     cart += Apple
     cart.cartItemsTotalPrice should be(1.8)
   }
+  "MyShoppingCart" should "accept three oranges but should price for only two as 0.5" in {
+    val cart = new ShoppingCart(EnableOffer)
+    cart += Orange
+    cart.cartItemsTotalPrice should be(0.25)
+    cart += Orange
+    cart.cartItemsTotalPrice should be(0.5)
+    cart += Orange
+    cart.cartItemsTotalPrice should be(0.5)
+  }
+  "MyShoppingCart" should "accept four oranges but should price for only three as 0.75" in {
+    val cart = new ShoppingCart(EnableOffer)
+    cart += Orange
+    cart.cartItemsTotalPrice should be(0.25)
+    cart += Orange
+    cart.cartItemsTotalPrice should be(0.5)
+    cart += Orange
+    cart.cartItemsTotalPrice should be(0.5)
+    cart += Orange
+    cart.cartItemsTotalPrice should be(0.75)
+  }
+  "MyShoppingCart" should "accept five oranges but should price for only three as 1.00" in {
+    val cart = new ShoppingCart(EnableOffer)
+    cart += Orange
+    cart.cartItemsTotalPrice should be(0.25)
+    cart += Orange
+    cart.cartItemsTotalPrice should be(0.5)
+    cart += Orange
+    cart.cartItemsTotalPrice should be(0.5)
+    cart += Orange
+    cart.cartItemsTotalPrice should be(0.75)
+    cart += Orange
+    cart.cartItemsTotalPrice should be(1.0)
+  }
+  "MyShoppingCart" should "accept six oranges but should price for only three as 1.00" in {
+    val cart = new ShoppingCart(EnableOffer)
+    cart += Orange
+    cart.cartItemsTotalPrice should be(0.25)
+    cart += Orange
+    cart.cartItemsTotalPrice should be(0.5)
+    cart += Orange
+    cart.cartItemsTotalPrice should be(0.5)
+    cart += Orange
+    cart.cartItemsTotalPrice should be(0.75)
+    cart += Orange
+    cart.cartItemsTotalPrice should be(1.0)
+    cart += Orange
+    cart.cartItemsTotalPrice should be(1.0)
+  }
+  "MyShoppingCart" should "accept two apples and three oranges but should price for only three as 1.1" in {
+    val cart = new ShoppingCart(EnableOffer)
+    cart += Orange
+    cart.cartItemsTotalPrice should be(0.25)
+    cart += Orange
+    cart.cartItemsTotalPrice should be(0.5)
+    cart += Orange
+    cart.cartItemsTotalPrice should be(0.5)
+    cart += Apple
+    cart.cartItemsTotalPrice should be(1.1)
+    cart += Apple
+    cart.cartItemsTotalPrice should be(1.1)
+  }
 }
