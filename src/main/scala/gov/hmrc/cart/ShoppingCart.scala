@@ -5,11 +5,7 @@ import gov.hmrc.offer.{DisableOffer, EnableOffer, Offer}
 
 import scala.math.BigDecimal.RoundingMode
 
-/**
-  * Created by E797240 on 15/12/2016.
-  */
 class ShoppingCart(offers: Offer = DisableOffer) {
-
 
   val prices: Map[Fruit, Double] = Map(Apple -> 0.6, Orange -> 0.25)
 

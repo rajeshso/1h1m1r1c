@@ -3,9 +3,6 @@ package gov.hmrc.cli
 import gov.hmrc.cart.ShoppingCart
 import gov.hmrc.fruits.{Apple, Orange}
 
-/**
-  * Created by E797240 on 15/12/2016.
-  */
 object CommandLineShoppingCart {
   //The input can be Apple,Apple or Apple,Orange or Apple,Apple,Orange
   def main(inp: Array[String]) = {
