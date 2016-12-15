@@ -3,6 +3,8 @@ package gov.hmrc.cart
 import gov.hmrc.fruits.{Apple, Fruit, Orange}
 import gov.hmrc.offer.{DisableOffer, EnableOffer, Offer}
 
+import scala.math.BigDecimal.RoundingMode
+
 /**
   * Created by E797240 on 15/12/2016.
   */
@@ -29,6 +31,7 @@ class ShoppingCart(offers: Offer = DisableOffer) {
     offers match {
       case EnableOffer =>
         totalForApples
+        BigDecimal(totalForApples).setScale(2, RoundingMode.HALF_UP).toDouble
       case DisableOffer => fruits.foldLeft(0D) { (total, item) =>
         total + prices(item)
       }

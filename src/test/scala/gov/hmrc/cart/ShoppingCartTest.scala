@@ -80,4 +80,17 @@ class ShoppingCartTest extends UnitSpec {
     cart += Apple
     cart.cartItemsTotalPrice should be(1.2)
   }
+  "MyShoppingCart" should "accept five apples but should price for only three" in {
+    val cart = new ShoppingCart(EnableOffer)
+    cart += Apple
+    cart.cartItemsTotalPrice should be(0.6)
+    cart += Apple
+    cart.cartItemsTotalPrice should be(0.6)
+    cart += Apple
+    cart.cartItemsTotalPrice should be(1.2)
+    cart += Apple
+    cart.cartItemsTotalPrice should be(1.2)
+    cart += Apple
+    cart.cartItemsTotalPrice should be(1.8)
+  }
 }
