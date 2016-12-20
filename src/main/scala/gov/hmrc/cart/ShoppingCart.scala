@@ -19,16 +19,16 @@ class ShoppingCart(offers: Offer = DisableOffer) {
     def totalForApples = {
       fruits.filter(fruit => fruit == Apple)
         .zipWithIndex
-        .filter(elem => elem._2 % 2 == 0)
-        .map(elem => elem._2)
-        .foldLeft(0D)((t, i) => t + prices(Apple))
+        .filter(appleEntry => appleEntry._2 % 2 == 0)
+        .map(appleEntry => appleEntry._2)
+        .foldLeft(0D)((total, appleIndex) => total + prices(Apple))
     }
     def totalForOranges = {
       fruits.filter(fruit => fruit == Orange)
         .zipWithIndex
         .foldLeft(0D) {
-          (total, tuple) =>
-            if (Iterator(0, 1).contains(tuple._2 % 3))
+          (total, orange) =>
+            if (Iterator(0, 1).contains(orange._2 % 3))
               total + prices(Orange)
             else
               total
